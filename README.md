@@ -1,68 +1,221 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![space-themed GIF](public/neptune.gif)
 
-## Available Scripts
+# PROJECT 2 README <!-- omit in toc -->
 
-In the project directory, you can run:
+- [Project Planning](#project-planning)
+  - [Overview](#overview)
+  - [Wireframes](#wireframes)
+  - [MVP](#mvp)
+    - [Goals](#goals)
+    - [Libraries](#libraries)
+    - [Data](#data)
+    - [Component Hierarchy](#component-hierarchy)
+    - [Component Breakdown](#component-breakdown)
+    - [Component Estimates](#component-estimates)
+    - [Helper Functions](#helper-functions)
+  - [Post-MVP](#post-mvp)
+- [Project Delivery](#project-delivery)
+  - [Code Showcase](#code-showcase)
+  - [Code Issues & Resolutions](#code-issues--resolutions)
 
-### `npm start`
+## Project Planning
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Overview
 
-### `npm test`
+**PathFinder** 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Project Description:** Visualizing tool utilizing pathfinding algorithms to solve variety of mazes.
 
-### `npm run build`
+<br>
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Wireframes
+<br>
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- Desktop View
+![Desktop View](public/desktop_wire.png)
+<br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Tablet View
+![Tablet View](public/tablet_wire.png)
+<br>
 
-### `npm run eject`
+- Mobile View
+![Mobile View](public/mobile_wire.png)
+<br>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### MVP
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+_The **PathFinder** MVP requires an interactive React app website with atleast 6 separate rendered componenets, and 5 reusable Storybook components._
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+_App must utilize React Router, Axios, CSS styling, responsive layout (Flexbox or Grid), high quality code presentation, and live deployment._
 
-## Learn More
+_App must be submitted with clean file structure, frequent deployment history and thourough documentation_
+<br>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Goals
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- _Incorporating assortment of algorithms._
+- _Enhancing user interactivity._
+- _Achieving clean and memorable design._
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+<br>
 
-### Analyzing the Bundle Size
+#### Libraries
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+|     Library      | Description                                |
+| :--------------: | :----------------------------------------- |
+|   React Router   | _Allows me to link and route between pages._ |
+| Framer Motion| _Adds animation to my page._ |
+|   Axios   | _Imports data for maze rendering._ |
 
-### Advanced Configuration
+<br>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+#### Data
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `npm run build` fails to minify
+|    API     | Quality Docs? | Website       | Sample Query                            |
+| :--------: | :-----------: | :------------ | :-------------------------------------- |
+| Mazebot API |      yes      | _https://noopschallenge.com/challenges/mazebot_ | _https://api.noopschallenge.com/mazebot/random?minSize=10&maxSize=10_ |
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+{
+    "name": "Maze #27 (10x10)",
+    "mazePath": "/mazebot/mazes/7lzE49LbL9mTrSfDBfK_Tf3jQ9SQX7idJSEXgctTbjM",
+    "startingPosition": [
+        4,
+        4
+    ],
+    "endingPosition": [
+        2,
+        9
+    ],
+    "message": "When you have figured out the solution, post it back to this url in JSON format. See the exampleSolution for more information.",
+    "exampleSolution": {
+        "directions": "ENWNNENWNNS"
+    },
+    "map": [
+        [
+            " ",
+            " ",
+            " ",
+            " ",
+            "X",
+            " ",
+            " ",
+            "X",
+            "X",
+            "X"
+        ],
+        [
+            " ",
+            " ",
+            "X",
+            " ",
+            " ",
+            " ",
+            " ",
+            "X",
+            "X",
+            "X"
+        ],
+```
+
+<br>
+
+#### Component Hierarchy
+
+> Use this section to define your React components and the data architecture of your app.
+
+```
+src
+|__ assets/
+      |__ fonts
+      |__ graphics
+      |__ images
+      |__ mockups
+|__ components/
+      |__ Header.jsx
+      |__ Maze.jsx
+      |__ MazeRow.jsx
+      |__ MazeNode.jsx
+      |__ AlgoSelect.jsx
+      |__ Selector.jsx
+      |__ Key.jsx
+```
+
+<br>
+
+#### Component Breakdown
+
+> Use this section to go into further depth regarding your components, including breaking down the components as stateless or stateful, and considering the passing of data between those components.
+
+|  Component   |    Type    | State | Props | Description                                                      |
+| :----------: | :--------: | :---: | :---: | :--------------------------------------------------------------- |
+|    Header    | functional |   n   |   n   | _The header will contain App name and author info._               |
+|  Maze  | functional |   y   |   n   | _Maze renders the entirity of the maze together._       |
+|   MazeRow    |   functional    |   n   |   y   | _MazeRow is  1 horizontal section of the maze._      |
+| Node | functional |   n   |   y   | _Node is 1 section of MazeRow._                 |
+|   Key   | functional |   n   |   n   | _Provides info about the MazeMap._ |
+|   AlgoSelector   | functional |   y   |   y   | _Selects which algorithm to use for solving the maze._ |
+|   Key   | functional |   n   |   n   | _Explaing the visuals on the map_ |
+
+<br>
+
+#### Component Estimates
+
+> Use this section to estimate the time necessary to build out each of the components you've described above. 
+>
+> Time frames are key to the development cycle. You have limited time to code your app, and your estimates can then be used to evalute possibilities of your MVP and post-MVP based on time needed. It's best you assume an additional hour for each component, as well as a few hours added to the total time, to play it safe.
+
+| Task                | Priority | Estimated Time | Time Invested | Actual Time |
+| ------------------- | :------: | :------------: | :-----------: | :---------: |
+| Create Maze   |    H     |     5 hrs      |     TBD     |    TBD    |
+| Style Maze Components |    L     |     8 hrs      |     TBD     |     TBD     |
+Implement Algorithms |    H     |     8 hrs      |     TBD     |     TBD     |
+Add animations |    M     |     8 hrs      |     TBD     |     TBD     |
+Add key section |    L     |     4 hrs      |     TBD     |     TBD     |
+Add info section |    L     |     4 hrs      |     TBD     |     TBD     |
+| TOTAL               |          |     37 hrs      |     TBD    |     TBD     |
+
+<br>
+
+#### Helper Functions
+
+> Use this section to document all helper functions, i.e. generic functions that can be reused in other applications.
+
+|  Function  | Description                                |
+| :--------: | :----------------------------------------- |
+| Capitalize | _Lorem ipsum dolor sit amet, consectetur._ |
+
+<br>
+
+### Post-MVP
+
+> Use this section to document ideas you've had that would be fun (or necessary) for your Post-MVP. This will be helpful when you return to your project after graduation!
+
+- _Adding more algorithms._
+- _Create your own maze on click._
+
+<br>
+
+***
+
+## Project Delivery
+
+### Code Showcase
+
+> Use this section to include a brief code snippet of functionality that you are proud of and a brief description.
+
+```
+code snippet here
+```
+
+### Code Issues & Resolutions
+
+> Use this section to list of all major issues encountered and their resolution, if you'd like.
