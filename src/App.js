@@ -5,6 +5,7 @@ import MazeMap from './Components/MazeMap.jsx'
 function App() {
   return (
     <>
+      <header>PathFinder</header>
       <MazeMap />
     </>
   );

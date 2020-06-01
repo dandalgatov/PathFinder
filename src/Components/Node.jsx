@@ -1,17 +1,26 @@
-import React from 'react'
+import React from 'react';
+import '../App.css';
 
 export default function Node(props) {
-    let mazeMap = props.mazeMap
-    let mazeRow = mazeMap.forEach(row => {
-        row.forEach (node => console.log(node))
-    })
 
+    const {
+        x,
+        y,
+        isStart,
+        isFinish,
+        isWall,
+    } = props
 
-    
+    const conditionalClass =
+        isStart ?
+            'start-node' : isFinish ?
+                'target-node' : isWall ?
+                    'wall-node' : 'space-node'
+
     return (
-        <div>
-         {mazeRow}
-       
-        </div>
-    )
+        <div
+            id={`node-${x}-${y}`}
+            className={`node ${conditionalClass}`}
+        ></div>
+    );
 }
