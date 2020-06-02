@@ -2,11 +2,10 @@ header {
   background-color: grey;
   color: white;
   height: 30px;
-
 }
 
 
-.row {
+.node-row {
   display: flex;
 
 }
@@ -16,9 +15,7 @@ header {
   height: 25px;
   margin: 0;
   border: solid black 1px;
-  
 }
-
 
 .wall-node {
   background-color: black;
@@ -30,4 +27,12 @@ header {
 
 .target-node {
   background-color: crimson;
+}
+
+.visited-node {
+  background-color: blue;
+}
+
+.shortest-path-node {
+  background-color: hotpink;
 }
