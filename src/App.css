@@ -11,8 +11,8 @@ header {
 }
 
 .node {
-  width: 25px;
-  height: 25px;
+  width: 5px;
+  height: 5px;
   margin: 0;
   border: solid black 1px;
 }

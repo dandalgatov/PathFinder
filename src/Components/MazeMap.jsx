@@ -12,7 +12,7 @@ export default function MazeMap() {
 
     useEffect(() => {
         const apiCall = async () => {
-            const apiMazeMap = await axios('https://api.noopschallenge.com/mazebot/random?minSize=60&maxSize=60')
+            const apiMazeMap = await axios('https://api.noopschallenge.com/mazebot/random?minSize=100&maxSize=100')
             const mazeMap = apiMazeMap.data.map
             setGrid(
                 mazeMap.map((mazeRow, x) => {
