@@ -1,0 +1,50 @@
+header{
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.name{
+    font-family: 'Press Start 2P', cursive;
+    color: #fca311;
+    height: 30px;
+    font-size: 2em;
+    padding: 1em;
+    width: auto;
+}
+
+.p {
+    color: chartreuse;
+}
+
+.r {
+    color: crimson;
+}
+
+.author{
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    font-size: 25px;
+    
+}
+
+a {
+    height: 100%;
+    margin: 0 .1em;
+    display: inline-block;
+    font-size: 25px;
+}
+
+
+img {
+    height: 100%;
+    width: 1em;
+    background-color: #1e1e1e;
+    border-radius: 100%;
+    padding: .25em;
+}

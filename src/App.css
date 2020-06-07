@@ -1,38 +1,13 @@
-header {
-  background-color: grey;
-  color: white;
-  height: 30px;
-}
-
-
-.node-row {
+.body {
   display: flex;
-
-}
-
-.node {
-  width: 5px;
-  height: 5px;
-  margin: 0;
-  border: solid black 1px;
-}
-
-.wall-node {
+  align-items: stretch;
   background-color: black;
 }
 
-.start-node {
-  background-color: chartreuse;
+.left {
+width: 60%;
 }
 
-.target-node {
-  background-color: crimson;
-}
-
-.visited-node {
-  background-color: blue;
-}
-
-.shortest-path-node {
-  background-color: hotpink;
+.right {
+  width: 40%;
 }

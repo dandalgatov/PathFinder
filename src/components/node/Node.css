@@ -1,0 +1,77 @@
+.node-row {
+    display: flex; 
+} 
+
+.node {
+
+    width: 10px;
+    height: 10px;
+    margin: 0;
+    border: solid black 1px;
+}
+
+.wall-node {
+    background-color: black;
+}
+
+.space-node {
+    background-color: #424242;
+}
+
+.start-node {
+    background-color: #7fff00;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+}
+
+.target-node {
+    background-color: #dc143c;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+}
+
+.visited-node {
+    background-color: #fca311;
+    animation-name: sizeBounce;
+    animation-duration: 3s;
+}
+
+
+.shortest-path-node {
+    background-color: #1856A5;
+    animation-name: sizeBounce;
+    animation-iteration-count: 1;
+    animation-duration: 1s;
+
+
+}
+
+
+
+@keyframes sizeBounce {
+    0% {
+      transform: scale(0.6);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+      
+    }
+}
+
+@keyframes pulse {
+    0% {
+      transform: scale(0.6);
+    }
+    50% {
+      transform: scale(2);
+    }
+    100% {
+      transform: scale(0.6);
+    }
+}
+

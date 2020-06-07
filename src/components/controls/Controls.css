@@ -1,0 +1,15 @@
+.controls {
+width: 80%;
+background-color: #1e1e1e;
+color: white;
+border-radius: 5px;
+padding: 1% 5% ;
+
+}
+
+
+
+button {
+    background-color: #fca311;
+    color: black
+  }
