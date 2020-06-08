@@ -1,6 +1,6 @@
 ![space-themed GIF](public/neptune.gif)
 
-https://flamboyant-minsky-27d84a.netlify.app/
+https://dd-pathfinder.netlify.app/
 
 # PROJECT 2 README <!-- omit in toc -->
 
