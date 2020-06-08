@@ -10,14 +10,21 @@ export default function Node(props) {
         isStart,
         isTarget,
         isWall,
+        isSpace,
+        isVisited,
+        isPath
     } = props
 
+
     const conditionalClass =
-        isStart ?
-            'start-node' : isTarget ?
-                'target-node' : isWall ?
-                    'wall-node' : 'space-node'
-    
+        isStart ? 'start-node'
+            : isTarget ? 'target-node'
+                : isPath ? 'shortest-path-node'
+                    : isVisited ? 'visited-node'
+                        : isSpace ? 'space-node'
+                            : isWall ? 'wall-node'
+                                : ''
+
 
 
     return (

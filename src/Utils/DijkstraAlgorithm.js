@@ -7,21 +7,21 @@
 //   |__animateDijstra [animates all the visited nodes]
 //     |__animateDijkstraPath [animates shortest path nodes]
 
-export function visualizeDijkstra(grid) {
+export function visualizeDijkstra(grid, speed) {
     const flatGrid = [].concat(...grid)
     const startNode = flatGrid.find(node => node.isStart === true)
     const targetNode = flatGrid.find(node => node.isTarget === true)
     const visitedNodes = dijkstra(grid, startNode, targetNode);
     const dijkstraPath = getDijkstraPath(targetNode);
-    animateDijkstra(visitedNodes, dijkstraPath);
+    animateDijkstra(visitedNodes, dijkstraPath, speed);
 }
 
-const animateDijkstra = (visitedNodes, dijkstraPath) => {
+const animateDijkstra = (visitedNodes, dijkstraPath, speed) => {
     for (let i = 0; i <= visitedNodes.length; i++) {
         if (i === visitedNodes.length) {
             setTimeout(() => {
-                animateDijkstraPath(dijkstraPath);
-            }, 10 * i);
+                animateDijkstraPath(dijkstraPath, speed);
+            }, speed * i);
             return;
         }
         setTimeout(() => {
@@ -34,11 +34,11 @@ const animateDijkstra = (visitedNodes, dijkstraPath) => {
             } else {
                 nodeDOM.className = 'node visited-node'
             }
-        }, 10 * i);
+        }, speed * i);
     }
 }
 
-const animateDijkstraPath = (dijkstraPath) => {
+const animateDijkstraPath = (dijkstraPath, speed) => {
     for (let i = 0; i < dijkstraPath.length; i++) {
         setTimeout(() => {
             const node = dijkstraPath[i]
@@ -49,12 +49,11 @@ const animateDijkstraPath = (dijkstraPath) => {
                 nodeDOM.className = 'node target-node'
             } else {
                 nodeDOM.className = 'node shortest-path-node'
-                node.scale = 2
-                node.duration = 0.5
             }
-        }, 10 * i);
+        }, speed * i);
     }
 }
+
 
 function dijkstra(grid, startNode, targetNode) {
     const unvisitedNodes = [].concat(...grid) // List of all nodes in a single array (flattnening 2 dimentional array)

@@ -4,8 +4,6 @@ header{
     justify-content: space-between;
 }
 
-
-
 .name{
     font-family: 'Press Start 2P', cursive;
     color: #fca311;
@@ -33,13 +31,16 @@ header{
     
 }
 
+.header-icons {
+    margin-left: .5em;
+}
+
 a {
     height: 100%;
     margin: 0 .1em;
     display: inline-block;
     font-size: 25px;
 }
-
 
 img {
     height: 100%;

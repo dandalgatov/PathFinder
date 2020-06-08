@@ -1,71 +1,91 @@
 import React from 'react'
 import './Controls.css'
-import { dijkstra, getDijkstraPath, visualizeDijkstra } from '../../Utils/DijkstraAlgorithm'
-import axios from "axios"
+import { visualizeDijkstra } from '../../Utils/DijkstraAlgorithm'
+import getMaze from '../../Utils/ApiGetMaze'
 
 export default function Controls(props) {
 
-    const { grid, setGrid } = props
+    const { grid, setGrid, speed, setSpeed } = props
 
     const removeWalls = () => {
-        const flatGrid = [].concat(...grid)
-        for (let i = 0; i < flatGrid.length; i++) {
-            const node = flatGrid[i]
+        grid.forEach(row => row.forEach(node => {
+            node.isWall = false
+            node.isSpace = true
+            node.isVisited = false
+            node.isPath = false
+            node.distance = Infinity
+            node.previousNode = null
+
             const nodeDOM = document.getElementById(`node-${node.x}-${node.y}`)
-            if (node.isWall === true) {
+            if (node.isStart === true) {
+                nodeDOM.className = 'node start-node'
+            } else if (node.isTarget === true) {
+                nodeDOM.className = 'node target-node'
+            } else {
                 nodeDOM.className = 'node space-node'
-                node.isWall = false
             }
-        }
+        }))
     }
 
     const dijkstra = () => {
-        visualizeDijkstra(grid)
+        visualizeDijkstra(grid, speed, setGrid)
+        
     }
 
-
-    const apiCall = async () => {
-        const apiMazeMap = await axios('https://api.noopschallenge.com/mazebot/random?minSize=60&maxSize=60')
-        const mazeMap = apiMazeMap.data.map
-        setGrid(
-            mazeMap.map((mazeRow, x) => {
-                return mazeRow.map((node, y) => {
-                    return {
-                        x,
-                        y,
-                        isStart: node === "A",
-                        isTarget: node === "B",
-                        isWall: node === "X",
-                        isVisited: false,
-                        distance: Infinity,
-                        previousNode: null,
-                    }
-                })
-            })
-        )
+    const newApiCall = () => {
+        resetMaze()
+        getMaze(setGrid)
     }
 
-
+    const resetMaze = () => {
+        grid.forEach(row => row.forEach(node => {
+            const nodeDOM = document.getElementById(`node-${node.x}-${node.y}`)
+            if (nodeDOM.className === 'node shortest-path-node' || nodeDOM.className === 'node visited-node' || node.isSpace === true) {
+                nodeDOM.className = 'node space-node'
+                node.isVisited = false
+                node.isPath = false
+                node.distance = Infinity
+                node.previousNode = null
+            } else if (node.isWall === true) {
+                nodeDOM.className = 'node wall-node'
+            } else if (node.isStart === true) {
+                nodeDOM.className = 'node start-node'
+            } else if (node.isTarget === true) {
+                nodeDOM.className = 'node target-node'
+            }
+        }))
+    }
 
     return (
         <div className='controls'>
             <h2>Controls</h2>
-            <ul><button>
-            Reset Maze
-            </button>
-            <button onClick = {apiCall}>
-            Render New Maze
-            </button>
-            <button onClick={removeWalls}>
-            Remove Walls
-            </button>
+            <ul>
+                <li><button onClick={resetMaze}>
+                    Reset Maze
+                </button></li>
+                <li><button onClick={newApiCall}>
+                    Render New Maze
+                </button></li>
+                <li><button onClick={removeWalls}>
+                    Remove Walls
+                </button></li>
             </ul>
-            <button onClick={dijkstra}>
+
+            <ul><li><button onClick={dijkstra}>
                 Visualize Dijkstra's Algorithm
-            </button>
-            <button onClick={dijkstra}>
-                Visualize Dijkstra's Algorithm
-            </button>
+            </button></li></ul>
+            <ul>
+                <li><button onClick={() => setSpeed(100)}>
+                    Speed = Slow
+                </button></li>
+                <li><button onClick={() => setSpeed(10)}>
+                    Speed = Normal
+                </button></li>
+                <li><button onClick={() => setSpeed(1)}>
+                    Speed = Fast
+                </button></li>
+            </ul>
+
 
 
         </div>
