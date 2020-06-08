@@ -1,5 +1,7 @@
 ![space-themed GIF](public/neptune.gif)
 
+https://flamboyant-minsky-27d84a.netlify.app/
+
 # PROJECT 2 README <!-- omit in toc -->
 
 - [Project Planning](#project-planning)
